@@ -1,0 +1,14 @@
+# Update your package list
+sudo apt update
+
+# Install required dependencies
+sudo apt install curl
+
+# Run the Netdata installer
+bash <(curl -SsL https://my-netdata.io/kickstart.sh)
+
+# Start and enable Netdata service
+sudo systemctl start netdata
+sudo systemctl enable netdata
+
+# Access the Netdata dashboard at http://localhost:19999
