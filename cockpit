@@ -1,0 +1,28 @@
+# Ubuntu/Debian:
+sudo apt update
+sudo apt install cockpit
+sudo systemctl start cockpit
+sudo systemctl enable cockpit
+sudo ufw allow 9090
+
+
+# CentOS/RHEL:
+sudo yum update
+sudo yum install cockpit
+sudo systemctl start cockpit.socket
+sudo systemctl enable cockpit.socket
+sudo firewall-cmd --permanent --add-service=cockpit
+sudo firewall-cmd --reload
+
+# Fedora:
+sudo dnf update
+sudo dnf install cockpit
+sudo systemctl start cockpit.socket
+sudo systemctl enable cockpit.socket
+sudo firewall-cmd --permanent --add-service=cockpit
+sudo firewall-cmd --reload
+
+
+
+######## Accessing Cockpit #######
+http://http://localhost:9090 in your web browser
