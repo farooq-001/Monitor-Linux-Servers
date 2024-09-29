@@ -1,0 +1,18 @@
+# Debian/Ubuntu:
+sudo apt update
+sudo apt install software-properties-common apt-transport-https
+wget -qO - http://www.webmin.com/jcameron-key.asc | sudo apt-key add -
+sudo add-apt-repository "deb http://download.webmin.com/download/repository sarge contrib"
+sudo apt update
+sudo apt install webmin
+
+# CentOS/RHEL:
+sudo yum install perl perl-Net-SSLeay openssl perl-IO-Tty
+sudo wget http://www.webmin.com/download/rpm/wbmn.rpm
+sudo rpm --import http://www.webmin.com/jcameron-key.asc
+sudo yum localinstall wbmn.rpm
+sudo systemctl start webmin
+sudo systemctl enable webmin
+
+
+##### Access Webmin:  https://localhost:10000/ #####
