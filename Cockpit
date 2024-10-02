@@ -1,6 +1,7 @@
 # Ubuntu/Debian:
 sudo apt update
 sudo apt install cockpit
+sudo apt install cockpit-pcp
 sudo systemctl start cockpit
 sudo systemctl enable cockpit
 sudo ufw allow 9090
