@@ -25,4 +25,4 @@ sudo firewall-cmd --reload
 
 
 ######## Accessing Cockpit #######
-http://http://localhost:9090 in your web browser
+http://localhost:9090 in your web browser
