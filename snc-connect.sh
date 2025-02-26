@@ -11,6 +11,12 @@ check_os() {
     fi
 }
 
+sudo firewall-cmd --zone=public --add-port=80/udp --permanent
+sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=9090/tcp --permanent
+sudo firewall-cmd --reload
+
 # Function to install and configure Cockpit on Ubuntu/Debian
 install_ubuntu_debian() {
     sudo apt update
