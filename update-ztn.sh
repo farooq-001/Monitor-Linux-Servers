@@ -19,7 +19,9 @@ ZTN_CONFIG_FILE="/etc/ztn/config.yaml"
 
 # Append the required configuration to /etc/ztn/config.yaml
 echo -e "    - port: 80\n      proto: tcp\n      groups:\n        - ssh" | tee -a "$ZTN_CONFIG_FILE"
+
 echo -e "    - port: 443\n      proto: tcp\n      groups:\n        - ssh" | tee -a "$ZTN_CONFIG_FILE"
+
 echo -e "    - port: 9090\n      proto: tcp\n      groups:\n        - ssh" | tee -a "$ZTN_CONFIG_FILE"
 
 # Restart firewalld to apply changes
