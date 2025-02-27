@@ -11,11 +11,6 @@ check_os() {
     fi
 }
 
-sudo firewall-cmd --zone=public --add-port=80/udp --permanent
-sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
-sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=9090/tcp --permanent
-sudo firewall-cmd --reload
 
 # Function to install and configure Cockpit on Ubuntu/Debian
 install_ubuntu_debian() {
@@ -24,6 +19,11 @@ install_ubuntu_debian() {
     sudo systemctl start cockpit
     sudo systemctl enable cockpit
     sudo ufw allow 9090
+    sudo firewall-cmd --zone=public --add-port=80/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/tcp --permanent
+    sudo firewall-cmd --reload
     echo "######## Accessing  #######"
     echo "http://localhost:9090 in your web browser"
 }
@@ -34,6 +34,10 @@ install_centos_rhel() {
     sudo yum install -y cockpit
     sudo systemctl start cockpit.socket
     sudo systemctl enable cockpit.socket
+    sudo firewall-cmd --zone=public --add-port=80/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/tcp --permanent
     sudo firewall-cmd --permanent --add-service=cockpit
     sudo firewall-cmd --reload
     echo "######## Accessing  #######"
@@ -47,6 +51,10 @@ install_fedora() {
     sudo systemctl start cockpit.socket
     sudo systemctl enable cockpit.socket
     sudo firewall-cmd --permanent --add-service=cockpit
+    sudo firewall-cmd --zone=public --add-port=80/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
+    sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=9090/tcp --permanent
     sudo firewall-cmd --reload
     echo "######## Accessing  #######"
     echo "http://localhost:9090 in your web browser"
