@@ -18,6 +18,11 @@ install_ubuntu_debian() {
     sudo apt install -y cockpit cockpit-pcp
     sudo systemctl start cockpit
     sudo systemctl enable cockpit
+    ######custum Port########
+    sudo mkdir -p /etc/systemd/system/cockpit.socket.d
+    echo -e "[Socket]\nListenStream=5146" | sudo tee /etc/systemd/system/cockpit.socket.d/listen.conf
+    sudo systemctl restart cockpit
+    
     sudo ufw allow 9090
     sudo firewall-cmd --zone=public --add-port=80/udp --permanent
     sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
@@ -34,6 +39,11 @@ install_centos_rhel() {
     sudo yum install -y cockpit
     sudo systemctl start cockpit.socket
     sudo systemctl enable cockpit.socket
+    ######custum Port########
+    sudo mkdir -p /etc/systemd/system/cockpit.socket.d
+    echo -e "[Socket]\nListenStream=5146" | sudo tee /etc/systemd/system/cockpit.socket.d/listen.conf
+    sudo systemctl restart cockpit
+    
     sudo firewall-cmd --zone=public --add-port=80/udp --permanent
     sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
     sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
@@ -50,6 +60,11 @@ install_fedora() {
     sudo dnf install -y cockpit
     sudo systemctl start cockpit.socket
     sudo systemctl enable cockpit.socket
+    ######custum Port########
+    sudo mkdir -p /etc/systemd/system/cockpit.socket.d
+    echo -e "[Socket]\nListenStream=5146" | sudo tee /etc/systemd/system/cockpit.socket.d/listen.conf
+    sudo systemctl restart cockpit
+    
     sudo firewall-cmd --permanent --add-service=cockpit
     sudo firewall-cmd --zone=public --add-port=80/udp --permanent
     sudo firewall-cmd --zone=public --add-port=9090/udp --permanent
